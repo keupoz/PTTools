@@ -29,14 +29,14 @@ let PRODUCTION = process.env.NODE_ENV !== 'development',
     jswatcher;
 
 gulp.task('clean', function (done) {
-	del('public');
+	del('docs');
 	done();
 });
 
 gulp.task('assets', function () {
 	return gulp.src('assets/**', { since: gulp.lastRun('assets') })
-		.pipe(newer('public/assets'))
-		.pipe(gulp.dest('public/assets'));
+		.pipe(newer('docs/assets'))
+		.pipe(gulp.dest('docs/assets'));
 });
 
 gulp.task('html', function () {
@@ -45,7 +45,7 @@ gulp.task('html', function () {
 			collapseWhitespace: true,
 			removeComments: true
 		})))
-		.pipe(gulp.dest('public'));
+		.pipe(gulp.dest('docs'));
 });
 
 gulp.task('css', function () {
@@ -53,7 +53,7 @@ gulp.task('css', function () {
 		.pipe(cleancss({
 			rebase: false
 		}))
-		.pipe(gulp.dest('public'));
+		.pipe(gulp.dest('docs'));
 });
 
 function getWatched (watcher) {
@@ -108,7 +108,7 @@ gulp.task('js', function () {
 		})))
 		.pipe(gulpif(PRODUCTION, uglify()))
 		.pipe(rename('app.js'))
-		.pipe(gulp.dest('public'));
+		.pipe(gulp.dest('docs'));
 });
 
 gulp.task('watch', function (done) {
@@ -123,8 +123,8 @@ gulp.task('watch', function (done) {
 
 gulp.task('server', function () {
 	sync.init({
-		server: 'public',
-		files: 'public/**/*',
+		server: 'docs',
+		files: 'docs/**/*',
 		open: false
 	});
 });
