@@ -1,0 +1,36 @@
+{
+	"tabs": {
+		"color-info": "Color info",
+		"gradient-editor": "Gradient"
+	},
+	
+	"color-input": {
+		"placeholder": "Enter color (rgb, hsl, hex or CSS name)"
+	},
+	
+	"color-preview": {
+		"hint": "Click to copy",
+		"success": "Copied!"
+	},
+	
+	"color-info": {
+		"remove-outline": "Remove outline",
+		"shadow-outline": "Shadow outline",
+		"technical-colors": "Technical colors",
+		"blush": "Blush",
+		"rendered-outline": "Rendered outline",
+		"computed-outline": "Computed outline",
+		"shadow": "Shadows"
+	},
+	
+	"gradient-editor": {
+		"original": "Original",
+		"remove-outline": "Remove outline",
+		"shadow-outline": "Shadow outline",
+		"steps": "Colors count",
+		"mode": "Mode",
+		"first-color": "First color",
+		"middle-color": "Middle color",
+		"last-color": "Last color"
+	}
+}

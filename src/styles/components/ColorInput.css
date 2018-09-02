@@ -1,0 +1,26 @@
+.color-input {
+	background: white;
+	border-radius: 18px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+	
+	height: 36px;
+	
+	display: flex;
+}
+
+.color-input-preview {
+	background: gray;
+	border-radius: 10px;
+	margin: 8px;
+	
+	width: 36px; height: 20px;
+}
+
+.color-input input {
+	background: transparent;
+	font-family: inherit;
+	line-height: 36px;
+	padding-right: 18px;
+	
+	flex-grow: 1;
+}

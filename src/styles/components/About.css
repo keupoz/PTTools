@@ -1,0 +1,39 @@
+.about-component {
+	margin-left: 10px;
+	margin-right: -20px;
+}
+
+.about-component button.material-icons {
+	background: transparent;
+	color: inherit;
+	width: 50px; height: 50px;
+}
+.about-component button.material-icons:active {
+	background: rgba(0,0,0,0.2);
+}
+
+.about {
+	background: #333334;
+	margin: auto;
+	transform: translateX(calc(50vw - 50%));
+	
+	max-width: 512px;
+	width: 100%; height: 100%;
+	
+	position: fixed;
+	top: 0; left: 0;
+}
+
+.about header button.material-icons {
+	margin-right: -20px;
+}
+
+.about .content {
+	padding: 20px;
+}
+.about .content a {
+	color: dodgerblue;
+}
+.about .content li {
+	margin-left: 1.5em;
+}

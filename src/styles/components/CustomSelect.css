@@ -1,0 +1,79 @@
+.select-wrapper {
+	font-size: 14px;
+	
+	position: relative;
+}
+
+.select-wrapper .select-space {
+	height: 36px;
+}
+
+.select-wrapper .select-hide {
+	overflow: hidden;
+	
+	width: 0; height: 0;
+}
+
+.select-wrapper .select {
+	background: white;
+	border-radius: 18px;
+	box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+	color: #111;
+	transition: border-radius 100ms;
+	user-select: none;
+	
+	width: 100%;
+	
+	position: absolute;
+}
+.select-wrapper.open .select {
+	border-radius: 5px;
+	transition: border-radius 100ms;
+}
+.select-wrapper .select-label {
+	padding: 0 18px;
+	
+	height: 36px;
+	
+	display: flex;
+	align-items: center;
+}
+.select-wrapper .select-label i {
+	transform: rotate(0turn);
+	transition: transform 250ms;
+}
+.select-wrapper.open .select-label i {
+	transform: rotate(0.5turn);
+}
+
+.select-wrapper .select-options {
+	overflow-y: auto;
+	padding-bottom: 5px;
+	transition: padding-bottom 100ms, max-height 100ms;
+	
+	max-height: 300px;
+	width: 100%;
+}
+.select-wrapper:not(.open) .select-options {
+	overflow-y: hidden;
+	padding-bottom: 0;
+	
+	max-height: 0;
+}
+
+.select-wrapper .select-option {
+	padding: 8px 16px;
+}
+.select-wrapper .select-option:first-child {
+	background: linear-gradient(rgba(0,0,0,0.05), transparent);
+}
+.select-wrapper .select-option:hover {
+	background: rgba(0,0,0,0.05);
+}
+.select-wrapper .select-option.selected {
+	background: linear-gradient(transparent, rgba(0,0,0,0.1)) dodgerblue;
+	color: white;
+}
+.select-wrapper .select-option:not(:last-child) {
+	border-bottom: 1px solid whitesmoke;
+}

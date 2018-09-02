@@ -1,0 +1,36 @@
+{
+	"tabs": {
+		"color-info": "Информация о цвете",
+		"gradient-editor": "Градиент"
+	},
+	
+	"color-input": {
+		"placeholder": "Введите цвет (rgb, hsl, hex или CSS-имя)"
+	},
+	
+	"color-preview": {
+		"hint": "Скопировать",
+		"success": "Скопировано!"
+	},
+	
+	"color-info": {
+		"remove-outline": "Убрать контур",
+		"shadow-outline": "Теневой контур",
+		"technical-colors": "Технические цвета",
+		"blush": "Румянец",
+		"rendered-outline": "Отрисованный контур",
+		"computed-outline": "Вычисленный контур",
+		"shadow": "Тени"
+	},
+	
+	"gradient-editor": {
+		"original": "Оригинал",
+		"remove-outline": "Убрать контур",
+		"shadow-outline": "Теневой контур",
+		"steps": "Количество цветов",
+		"mode": "Режим",
+		"first-color": "Первый цвет",
+		"middle-color": "Средний цвет",
+		"last-color": "Последний цвет"
+	}
+}

@@ -1,0 +1,9 @@
+.language-switcher img {
+	transition: opacity 100ms;
+}
+.language-switcher img:not(:last-child) {
+	margin-right: 10px;
+}
+.language-switcher img:not(.selected):not(:hover) {
+	opacity: 0.25;
+}

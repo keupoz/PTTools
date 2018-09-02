@@ -1,0 +1,24 @@
+.tab-switcher {
+	background: rgba(0,0,0,0.2);
+	color: #ddd;
+	
+	display: flex;
+}
+
+.tab-switcher > div {
+	box-sizing: border-box;
+	line-height: 50px;
+	padding: 0 20px;
+	text-align: center;
+	transition: border-bottom, line-height;
+	transition-duration: 200ms;
+	
+	height: 50px;
+	
+	flex-grow: 1;
+}
+
+.tab-switcher > div.current {
+	border-bottom: 5px solid dodgerblue;
+	line-height: 45px;
+}

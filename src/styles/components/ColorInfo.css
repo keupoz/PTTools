@@ -1,0 +1,12 @@
+.color-info table {
+	border-collapse: collapse;
+	
+	width: 100%;
+}
+.color-info table td {
+	padding: 3px;
+	white-space: nowrap;
+}
+.color-info table td:first-child {
+	width: 100%;
+}
