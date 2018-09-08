@@ -155,9 +155,11 @@ export default {
 		},
 		
 		calcHSV (color) {
-			let hsv = chroma(color).hsv();
-			if (isNaN(hsv[0])) hsv[0] = this.hsv ? this.hsv[0] : 0;
-			this.hsv = hsv;
+			if (color) {
+				let hsv = chroma(color).hsv();
+				if (isNaN(hsv[0])) hsv[0] = this.hsv ? this.hsv[0] : 0;
+				this.hsv = hsv;
+			} else this.hsv = [0,1,1];
 		}
 	}
 }
