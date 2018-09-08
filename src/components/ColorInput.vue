@@ -47,6 +47,8 @@ export default {
 	
 	methods: {
 		parseColor (color) {
+			if (this.currentColor === undefined) this.currentColor = color;
+			
 			color = color.replace(/\s+/g, '');
 			
 			if (color == '') {
