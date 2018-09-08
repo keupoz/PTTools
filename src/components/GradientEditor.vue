@@ -80,13 +80,13 @@ export default {
 		let data = {
 			lang: {},
 			
-			gradientLength: 6,
-			gradientMode: 'RGB',
+			gradientLength: +localStorage.getItem('gradient_length') || 6,
+			gradientMode: localStorage.getItem('gradient_mode') || 'RGB',
 			gradientModes: [ 'RGB', 'HSL', 'Lch', 'Lab' ],
 			
-			firstColor: 'gold',
-			middleColor: undefined,
-			lastColor: 'maroon',
+			firstColor: localStorage.getItem('first_gradient_color') || 'gold',
+			middleColor: localStorage.getItem('middle_gradient_color') || undefined,
+			lastColor: localStorage.getItem('last_gradient_color') || 'maroon',
 			
 			currentInput: undefined,
 			hsv: undefined
@@ -157,9 +157,32 @@ export default {
 		calcHSV (color) {
 			if (color) {
 				let hsv = chroma(color).hsv();
-				if (isNaN(hsv[0])) hsv[0] = this.hsv ? this.hsv[0] : 0;
+				if (isNaN(hsv[0])) hsv[0] = this.hsv && this.hsv[0] || 0;
 				this.hsv = hsv;
 			} else this.hsv = [0,1,1];
+		}
+	},
+	
+	watch: {
+		firstColor (color) {
+			localStorage.setItem('first_gradient_color', color);
+		},
+		
+		middleColor (color) {
+			if (color === undefined) localStorage.removeItem('middle_gradient_color');
+			else localStorage.setItem('middle_gradient_color', color);
+		},
+		
+		lastColor (color) {
+			localStorage.setItem('last_gradient_color', color);
+		},
+		
+		gradientLength (length) {
+			localStorage.setItem('gradient_length', length);
+		},
+		
+		gradientMode (mode) {
+			localStorage.setItem('gradient_mode', mode);
 		}
 	}
 }

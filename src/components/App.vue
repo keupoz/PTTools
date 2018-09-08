@@ -36,13 +36,19 @@ export default {
 		let data = {
 			version,
 			
-			tab: 'color-info',
+			tab: localStorage.getItem('tab') || 'color-info',
 			tabs: {}
 		};
 		
 		Dictionary.register('tabs', data.tabs);
 		
 		return data;
+	},
+	
+	watch: {
+		tab (tab) {
+			localStorage.setItem('tab', tab);
+		}
 	}
 }
 </script>

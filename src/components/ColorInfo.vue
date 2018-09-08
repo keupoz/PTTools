@@ -63,13 +63,17 @@ export default {
 	components: { AvailabilitySign, ColorInput, ColorPicker, ColorPreview },
 	
 	data () {
-		let color = 'forestgreen',
+		let color = localStorage.getItem('color') || 'forestgreen',
+		    color_hsv = chroma(color).hsv(),
 		    data = {
 				lang: {},
 				
 				color,
-				color_hsv: chroma(color).hsv()
+				color_hsv
 			};
+		
+		// make monochrome colors red
+		if (isNaN(color_hsv[0])) color_hsv[0] = 0;
 		
 		Dictionary.register('color-info', data.lang);
 		
@@ -144,6 +148,12 @@ export default {
 			// hsv is always the same array here, so it's not reactive and has to be recreated
 			this.color_hsv = [...hsv];
 			this.color = hsv2hex(hsv);
+		}
+	},
+	
+	watch: {
+		color (color) {
+			localStorage.setItem('color', color);
 		}
 	}
 }
