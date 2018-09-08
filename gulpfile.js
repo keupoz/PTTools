@@ -96,7 +96,7 @@ gulp.task('js', function () {
 			    ids = bundle.modules.map(module => module.id),
 			    unwatch = watched.filter(id => ids.indexOf(id) == -1);
 			
-			ids = ids.filter(id => watched.indexOf(id) == -1);
+			ids = ids.filter(id => id.startsWith('/') && watched.indexOf(id) == -1);
 			
 			jswatcher.unwatch(unwatch);
 			jswatcher.add(ids);
