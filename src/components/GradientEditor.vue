@@ -45,7 +45,7 @@
 			:emptyAllowed="true"
 			v-model="middleColor"
 			@focus="selectInput('middleColor')"
-			@input="calcHSV"  />
+			@input="calcHSV" />
 		
 		<div class="space"></div>
 		
@@ -54,7 +54,7 @@
 		<color-input
 			v-model="lastColor"
 			@focus="selectInput('lastColor')"
-			@input="calcHSV"  />
+			@input="calcHSV" />
 		
 		<div v-if="hsv" class="space"></div>
 		
