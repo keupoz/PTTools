@@ -1,79 +1,68 @@
-.select-wrapper {
-	font-size: 14px;
-	
-	position: relative;
+.vue-select {
+  position: relative;
+  user-select: none;
 }
+.vue-select.open {
+  z-index: 15;
+}
+.vue-select.open .vue-select--label {
+  border-radius: 9px 9px 0 0;
+  transition-delay: 0;
+}
+.vue-select.open .vue-select--label button {
+  transform: rotate(0.5turn);
+}
+.vue-select.open .vue-select--options {
+  padding-bottom: 9px;
+  transition-delay: 200ms;
+  max-height: 300px;
+}
+.vue-select--label {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  color: #333;
+  padding-left: 18px;
+  transition: border-radius 200ms;
+  transition-delay: 100ms;
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+.vue-select--label label {
+  flex-grow: 1;
+}
+.vue-select--label button {
+  background: none !important;
+  transition: transform 200ms;
 
-.select-wrapper .select-space {
-	height: 36px;
+  width: 50px;
+  height: 100%;
 }
-
-.select-wrapper .select-hide {
-	overflow: hidden;
-	
-	width: 0; height: 0;
+.vue-select--options {
+  background: linear-gradient(rgba(0,0,0,0.05), transparent 20px) #fff;
+  border-radius: 0 0 9px 9px;
+  color: #333;
+  overflow: auto;
+  transition: max-height, padding;
+  transition-duration: 100ms;
+  width: 100%;
+  max-height: 0;
+  position: absolute;
 }
-
-.select-wrapper .select {
-	background: white;
-	border-radius: 18px;
-	box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-	color: #111;
-	transition: border-radius 100ms;
-	user-select: none;
-	
-	width: 100%;
-	
-	position: absolute;
+.vue-select--options li {
+  font-size: 0.9em;
+  list-style: none;
+  padding: 8px 18px;
 }
-.select-wrapper.open .select {
-	border-radius: 5px;
-	transition: border-radius 100ms;
+.vue-select--options li:not(:last-child) {
+  border-bottom: 1px solid rgba(0,0,0,0.04);
 }
-.select-wrapper .select-label {
-	padding: 0 18px;
-	
-	height: 36px;
-	
-	display: flex;
-	align-items: center;
+.vue-select--options li:hover {
+  background: rgba(0,0,0,0.1);
+  border-color: transparent;
 }
-.select-wrapper .select-label i {
-	transform: rotate(0turn);
-	transition: transform 250ms;
-}
-.select-wrapper.open .select-label i {
-	transform: rotate(0.5turn);
-}
-
-.select-wrapper .select-options {
-	overflow-y: auto;
-	padding-bottom: 5px;
-	transition: padding-bottom 100ms, max-height 100ms;
-	
-	max-height: 300px;
-	width: 100%;
-}
-.select-wrapper:not(.open) .select-options {
-	overflow-y: hidden;
-	padding-bottom: 0;
-	
-	max-height: 0;
-}
-
-.select-wrapper .select-option {
-	padding: 8px 16px;
-}
-.select-wrapper .select-option:first-child {
-	background: linear-gradient(rgba(0,0,0,0.05), transparent);
-}
-.select-wrapper .select-option:hover {
-	background: rgba(0,0,0,0.05);
-}
-.select-wrapper .select-option.selected {
-	background: linear-gradient(transparent, rgba(0,0,0,0.1)) dodgerblue;
-	color: white;
-}
-.select-wrapper .select-option:not(:last-child) {
-	border-bottom: 1px solid whitesmoke;
+.vue-select--options li.selected {
+  background: linear-gradient(transparent, rgba(0,0,0,0.1)) #1e90ff;
+  color: #fff;
 }

@@ -1,68 +1,75 @@
 <template>
-	<div class="select-wrapper" :class="{ open }">
-		<div class="select" :style="{ 'z-index': zIndex }">
-			<div class="select-label" ref="label" @click="toggle(true, true)">
-				<span class="flex-space">{{ value }}</span>
-				<i class="material-icons">keyboard_arrow_down</i>
-			</div>
-			<div class="select-options">
-				<div
-					v-for="option in list"
-					class="select-option"
-					:class="{ selected: value === option }"
-					@click="select(option)"
-				>{{ option }}</div>
-			</div>
-		</div>
-		<div class="select-space">
-			<div class="select-hide">
-				<select :value="value" @blur="toggle(false)" ref="select">
-					<option v-for="option in list" :value="option"></option>
-				</select>
-			</div>
-		</div>
-	</div>
+  <div
+    class="vue-select"
+    :class="{ open }"
+    @click.stop
+    @keyup.esc="hideDropdown">
+
+    <label @click="toggleDropdown">{{ label }}</label>
+
+    <div @click="toggleDropdown" class="vue-select--label">
+      <label>{{ current }}</label>
+      <button class="material-icons">keyboard_arrow_down</button>
+    </div>
+
+    <ul class="vue-select--options">
+      <li
+        v-for="option in options"
+        :key="option"
+        :class="{ selected: current == option }"
+
+        @click="select(option)">{{ option }}</li>
+    </ul>
+  </div>
 </template>
 
 <script>
+let last = null;
+
+function hideLast () {
+  if (last) last.hideDropdown();
+}
+
+document.body.addEventListener('click', hideLast);
+
 export default {
-	props: {
-		list: Array,
-		value: String
-	},
-	
-	data () {
-		return {
-			isLabelClickable: true,
-			open: false,
-			zIndex: 0
-		};
-	},
-	
-	methods: {
-		toggle (value = !this.open, byLabel) {
-			if (byLabel && !this.isLabelClickable) return;
-			
-			this.open = value;
-			if (this.open) {
-				this.zIndex = 1;
-				this.$refs.select.focus();
-			} else {
-				this.isLabelClickable = false;
-				setTimeout(function () {
-					this.isLabelClickable = true;
-				}.bind(this), 0);
-				
-				setTimeout(function () {
-					this.zIndex = 0;
-				}.bind(this), 100);
-			}
-		},
-		
-		select (value) {
-			this.value = this.$refs.select.value = value;
-			this.$emit('input', value);
-		}
-	}
+  props: [ 'label', 'options', 'value' ],
+
+  data () {
+    return {
+      open: false,
+      current: this.value
+    };
+  },
+
+  methods: {
+    showDropdown () {
+      this.open = true;
+      hideLast();
+      last = this;
+    },
+
+    hideDropdown () {
+      this.open = false;
+      last = null;
+    },
+
+    toggleDropdown () {
+      if (this.open) this.hideDropdown();
+      else this.showDropdown();
+    },
+
+    select (option) {
+			this.current = option;
+      this.hideDropdown();
+      this.$emit('input', option);
+    }
+  },
+
+  watch: {
+    value (newVal) {
+      this.current = newVal;
+    }
+  }
 }
 </script>
